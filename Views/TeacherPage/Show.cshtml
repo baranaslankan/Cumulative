@@ -1,0 +1,16 @@
+@model SchoolApi.Models.TeacherCoursesViewModel
+
+<h1>@Model.Teacher.TeacherFname @Model.Teacher.TeacherLname</h1>
+<p><strong>Employee Number:</strong> @Model.Teacher.EmployeeNumber</p>
+<p><strong>Hire Date:</strong> @Model.Teacher.HireDate.ToString("yyyy-MM-dd")</p>
+<p><strong>Salary:</strong> @Model.Teacher.Salary.ToString("C")</p>
+
+<h3>Courses Taught:</h3>
+<ul>
+    @foreach (var course in Model.Courses)
+    {
+        <li>@course.CourseName</li>
+    }
+</ul>
+
+<a href="@Url.Action("List", "TeacherPage")">Back to List</a>

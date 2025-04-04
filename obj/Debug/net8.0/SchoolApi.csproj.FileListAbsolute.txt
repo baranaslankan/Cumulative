@@ -40,3 +40,4 @@
 /Users/baranaslankan/Desktop/backend-lab/SchoolApi/obj/Debug/net8.0/SchoolApi.pdb
 /Users/baranaslankan/Desktop/backend-lab/SchoolApi/obj/Debug/net8.0/SchoolApi.genruntimeconfig.cache
 /Users/baranaslankan/Desktop/backend-lab/SchoolApi/obj/Debug/net8.0/ref/SchoolApi.dll
+/Users/baranaslankan/Desktop/backend-lab/SchoolApi/obj/Debug/net8.0/SchoolApi.sourcelink.json

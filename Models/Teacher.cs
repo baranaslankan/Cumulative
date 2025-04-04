@@ -24,5 +24,8 @@ namespace SchoolApi.Models
 
         [DataType(DataType.Currency)]
         public decimal Salary { get; set; }
+
+        [StringLength(20)]
+        public string TeacherWorkPhone { get; set; }
     }
 }

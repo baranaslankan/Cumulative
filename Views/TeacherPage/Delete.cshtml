@@ -1,0 +1,37 @@
+@model SchoolApi.Models.Teacher
+
+@{
+    ViewData["Title"] = "Delete Teacher";
+}
+
+<h1>Are you sure you want to delete the following teacher?</h1>
+
+<div>
+    <strong>@Model.TeacherFname @Model.TeacherLname</strong>
+</div>
+
+<form id="deleteTeacherForm" method="POST">
+    <label for="TeacherId">Enter Teacher ID to delete:</label>
+    <input type="number" id="TeacherId" name="TeacherId" required><br><br>
+
+    <button type="submit">Delete Teacher</button>
+</form>
+
+<script>
+    document.getElementById("deleteTeacherForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const teacherId = document.getElementById("TeacherId").value;
+
+        const response = await fetch(`http://localhost:5199/api/TeacherAPI/${teacherId}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            alert('Teacher deleted successfully!');
+        } else {
+            alert('Failed to delete teacher!');
+        }
+    });
+</script>
+

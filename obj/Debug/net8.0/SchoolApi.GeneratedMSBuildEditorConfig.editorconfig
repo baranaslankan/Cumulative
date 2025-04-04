@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/baranaslankan/Desktop/backend-lab/SchoolApi
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/baranaslankan/Desktop/backend-lab/SchoolApi/Views/TeacherPage/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/baranaslankan/Desktop/backend-lab/SchoolApi/Views/TeacherPage/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/baranaslankan/Desktop/backend-lab/SchoolApi/Views/TeacherPage/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

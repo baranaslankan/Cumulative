@@ -63,6 +63,51 @@ namespace SchoolApi.Controllers
             return View(teacher);
         }
 
+        // Edit page for teacher
+        public async Task<IActionResult> Edit(int id)
+        {
+            var teacher = await _context.Teachers.FindAsync(id);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+            return View(teacher);
+        }
+
+        // POST request for updating a teacher
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("TeacherId, TeacherFname, TeacherLname, EmployeeNumber, HireDate, Salary, TeacherWorkPhone")] Teacher teacher)
+        {
+            if (id != teacher.TeacherId)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(teacher);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Teachers.Any(e => e.TeacherId == teacher.TeacherId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(List)); // Redirect to the teacher list after successful edit
+            }
+            return View(teacher); // Return the same view with the teacher model if there's an error
+        }
+
+
         public async Task<IActionResult> Delete(int id)
         {
             var teacher = await _context.Teachers

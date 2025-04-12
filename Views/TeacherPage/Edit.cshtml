@@ -1,0 +1,77 @@
+@model SchoolApi.Models.Teacher
+
+@{
+    ViewData["Title"] = "Edit Teacher";
+}
+
+<h2>Edit Teacher</h2>
+
+<form id="editTeacherForm">
+    <input type="hidden" name="TeacherId" value="@Model.TeacherId" />
+    <div class="form-group">
+        <label for="TeacherFname">First Name</label>
+        <input type="text" id="TeacherFname" name="TeacherFname" value="@Model.TeacherFname" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="TeacherLname">Last Name</label>
+        <input type="text" id="TeacherLname" name="TeacherLname" value="@Model.TeacherLname" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="EmployeeNumber">Employee Number</label>
+        <input type="text" id="EmployeeNumber" name="EmployeeNumber" value="@Model.EmployeeNumber" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="HireDate">Hire Date</label>
+        <input type="date" id="HireDate" name="HireDate" value="@Model.HireDate.ToString("yyyy-MM-dd")" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Salary">Salary</label>
+        <input type="number" id="Salary" name="Salary" value="@Model.Salary" class="form-control" min="0" required />
+    </div>
+
+    <div class="form-group">
+        <label for="TeacherWorkPhone">Work Phone</label>
+        <input type="text" id="TeacherWorkPhone" name="TeacherWorkPhone" value="@Model.TeacherWorkPhone" class="form-control" />
+    </div>
+
+    <button type="button" id="submitButton" class="btn btn-primary">Save</button>
+</form>
+
+<script>
+    document.getElementById("submitButton").addEventListener("click", function () {
+        const teacherData = {
+            TeacherId: document.querySelector("input[name='TeacherId']").value,
+            TeacherFname: document.getElementById("TeacherFname").value,
+            TeacherLname: document.getElementById("TeacherLname").value,
+            EmployeeNumber: document.getElementById("EmployeeNumber").value,
+            HireDate: document.getElementById("HireDate").value,
+            Salary: document.getElementById("Salary").value,
+            TeacherWorkPhone: document.getElementById("TeacherWorkPhone").value
+        };
+
+        document.getElementById('Salary').value = document.getElementById('Salary').value.replace(/,/g, '');
+
+        fetch(`http://localhost:5199/api/TeacherAPI/${teacherData.TeacherId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(teacherData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                alert("Teacher updated successfully");
+                window.location.href = "/TeacherPage/List";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Failed to update teacher");
+        });
+    });
+</script>
